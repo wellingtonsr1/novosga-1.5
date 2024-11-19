@@ -6,9 +6,11 @@ https://gist.github.com/rhuandevops/fe72dc889ca5f8d9b67daf1d2d627be2
 https://github.com/joserf/sga
 
 scp -P 22 sga-master/ wellington@192.168.0.8:~ (Tranferir do remoto pro host)
-docker build -t novosga .
-docker exec -it 6c55f02b4723 sh
-docker run --name Novo-Sga -p 8080:80 -d novosga
+docker build -t novosga . (criar a imagem)
+docker exec -it 6c55f02b4723 sh (acessar o container)
+docker run --name Novo-Sga -p 8080:80 -d novosga (criar um container)
+docker build --build-arg DATABASE_HOST="192.168.0.106" -t novosga . (criar a imagem usando argumentos)
+ docker run --name Novo-Sga -p 8080:80 --ip 10.30.0.170 -d novosga (acessando um container com um IP novo)
 
 processQueue: function() {
             if (this.playing && this.queue.length === 0) {
